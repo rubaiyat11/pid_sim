@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import numpy as np
 
-#Simulated MPC. Doesnt work until connect to a sensor.
 
 dt = 0.1
 
@@ -44,7 +43,7 @@ def simulate(x, u_sequence):
 
         x_sim = A @ x_sim + B @ u
 
-        return total_cost
+    return total_cost
     
 
 for step in range(100):
@@ -54,14 +53,14 @@ for step in range(100):
     for u0 in u_candidates:
         for u1 in u_candidates:
             for u2 in u_candidates:
+                for u3 in u_candidates:
+                    u_sequence = [u0, u1, u2, u3]
 
-                u_sequence = [u0, u1, u2]
+                    cost = simulate(x, u_sequence)
 
-                cost = simulate(x, u_sequence)
-
-                if(cost < best_cost):
-                    best_cost = cost
-                    best_u = u0
+                    if(cost < best_cost):
+                        best_cost = cost
+                        best_u = u0
 
     x = A @ x + B @ best_u
 
