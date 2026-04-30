@@ -1,4 +1,4 @@
-#/usr/bin/env python3
+#!/usr/bin/env python3
 import numpy as np
 from scipy.linalg import solve_continuous_are
 from collections import deque
